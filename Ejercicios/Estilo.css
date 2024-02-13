@@ -1,0 +1,26 @@
+.imagen {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    float: left;
+    margin-right: 10px;
+}
+h1{
+    margin-top: 15px;
+}
+.container{
+    margin-bottom: 10px;
+    width: 80% !important;
+}
+.caja{
+    margin-top: 20%;
+}
+.caja2{
+    border-right: 1px black solid;
+    padding: 5px;
+    width: 30% !important;
+}
+.caja1{
+    margin-left: 30px;
+}

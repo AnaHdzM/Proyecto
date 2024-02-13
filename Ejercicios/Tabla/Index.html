@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Mandar a llamar bootstrap -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <title>Libros</title>
+</head>
+<body>
+     <!-- usar ajax y jquery, abrir en un modal la lista de -->
+    <!-- Boton que ejecute el modal -->
+    <button id="btnAbrirModal" class="btn btn-primary">Abrir Modal</button>
+
+    <!-- modal que imprima los datos del array -->
+    <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Lista de Libros</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="contenidoModal">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    //mandar a llamar jquery
+    //mandar a llamar lo demas
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+
+        //peticion con ajax para mandar traer los datos del archivo libros.php
+        //imprimir los datos en el modal
+        //manipulacion del DOM
+        $(document).ready(function() {
+    $("#btnAbrirModal").on("click", function() {
+        $.ajax({
+            url: "json.php", 
+            type: "GET",
+            dataType: "json",
+            success: function(datos) {
+                var contenidoModal = "<ul>";
+
+                $.each(datos, function(index, libros) { // Cambiado de 'libro' a 'libros'
+                    contenidoModal += "<li>" + 
+                        "Nombre: " + libros.Nombre + 
+                        " - Autor: " + libros.Autor + 
+                        " - Año: " + libros.Anio + 
+                        " - Páginas: " + libros.NumeroPaginas + 
+                        " - ISBN: " + libros.ISBN + 
+                        " - Capítulos: <ul>";
+
+                    $.each(libros.Capitulos, function(capitulo, paginas) {
+                        contenidoModal += "<li>" + capitulo + ": " + paginas + "</li>";
+                    });
+
+                    contenidoModal += "</ul></li>";
+                });
+
+                contenidoModal += "</ul>";
+
+                $("#contenidoModal").html(contenidoModal);
+
+                $("#miModal").modal("show");
+            },
+            error: function(error) {
+                console.log("Error al cargar datos: " + JSON.stringify(error));
+            }
+        });
+    });
+});
+
+    </script>
+</body>
+</html>

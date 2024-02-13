@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataTable</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+
+<div class="tabla">
+    <table id="Tabla" class="display table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Edad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Ana</td>
+                <td>Hernández</td>
+                <td>11796@utl.edu.mx</td>
+                <td>21</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Francisco</td>
+                <td>Meza</td>
+                <td>Fran@gmail.com</td>
+                <td>19</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Luis</td>
+                <td>Ambriz</td>
+                <td>Luisin@gmail.com</td>
+                <td>19</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Manuel</td>
+                <td>Oviedo</td>
+                <td>Manuelillo@gmail.com</td>
+                <td>22</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#Tabla').DataTable();
+    });
+</script>
+
+</body>
+</html>
